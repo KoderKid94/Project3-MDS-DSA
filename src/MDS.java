@@ -184,20 +184,20 @@ public class MDS {
             return 0;//we return 0
         }
         int sum = 0;//variable to hold sum of desc values removed
-        for(Integer desc : list){//iterate through list of desc values
+        for(Integer desc : list){//iterate through list of desc values to be removed
             TreeSet<Integer> set = hash.get(desc);//get set of values associated with desc number
             HashMap<Integer, Integer> countsMap = descCounts.get(desc);//get of id's and duplicates
             if(set == null || countsMap == null){//the set or countsMap is empty or null so continue iterating through list
                 continue;
             }
             if(countsMap.containsKey(id)) {//we found a desc number associated with id so,
-                Integer dup = countsMap.get(id);
                 countsMap.remove(id);//we remove it from the map
-                sum += desc * dup;//sum = desc# * #ofDuplicates
+                sum += desc;//sum == sum of desc values removed
                 if(countsMap.isEmpty()) {//the set is now empty so,
                     descCounts.remove(desc);//we remove it from hash
                 }
             }
+
             if(set.remove(id) && set.isEmpty()) {//if id is removed and the set is now empty,
                 hash.remove(desc);//we need to remove the empty set from hash
             }
