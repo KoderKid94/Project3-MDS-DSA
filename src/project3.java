@@ -12,7 +12,7 @@ public class project3 {
         boolean VERBOSE = false;
         if (args.length > 1) { VERBOSE = Boolean.parseBoolean(args[1]); }
 
-        String operation = "";
+        String operation;
         int lineno = 0;
 
         MDS mds = new MDS();
