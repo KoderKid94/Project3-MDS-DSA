@@ -26,6 +26,7 @@ public class MDS {
                 return 0;//item is already in the tree, so return 0
             }
             //list is not null or empty so we update the price and description
+            tree.put(id, price);//update id with new price
             for (Map.Entry<Integer, TreeSet<Integer>> entry : new HashMap<>(hash).entrySet()) {//first we remove id from each desc value to later be replaced
                 TreeSet<Integer> set = entry.getValue();//set contains the TreeSet of each key in hash
                 Integer desc = entry.getKey();//Store key of associated set to be used for descCounts
@@ -100,7 +101,6 @@ public class MDS {
         }
         tree.remove(id);//remove id from tree as well
         return sum;//return the sum of all desc numbers associated with the deleted id
-
     }
 
     /*
